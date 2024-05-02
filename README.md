@@ -43,6 +43,11 @@ Below are the steps to create a Python virtual environment and install the neces
     pip install -r requirements.txt
     ```
 
+5. **Run script:** Run pythons script by running the following command:
+    ```
+    python3 test_2.py
+    ```
+
 With these steps, you will have successfully set up the virtual environment and installed all the necessary dependencies to run the scraper.
 
 ## Usage

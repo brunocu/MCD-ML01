@@ -1,22 +1,19 @@
 {
     "url": "https://www.kavak.com/mx/usado/kia-soul-20_ex_ivt_auto-suv-2021",
-    "name": "Kia Soul 2.0 EX IVT AUTO Suv 2021",
-    "KM-city": "17,155 km • Ciudad de México",
-    "price": "355,999",
-    "month_price": "Desde $4,661 /mes*",
+    "name": "Kia Soul 1.6 LX AUTO Suv 2021",
+    "KM-city": "32,172 km • Ciudad de México",
+    "price": "292,999",
+    "month_price": "Desde $3,949 /mes*",
     "year": "2021",
-    "model": "2.0 EX IVT AUTO",
+    "model": "1.6 LX AUTO",
     "general_descriptions": {
-        "category": "Descripción general",
-        "attributes": {
-            "Tracción": "4x2",
-            "Transmisión": "Automático",
-            "Ciudad": "Ciudad de México",
-            "Sucursal": "Kavak Plaza Fortuna",
-            "Stock ID": "314261",
-            "Estacionado en": "K-94",
-            "Consumo de Combustible (KM/L)": "13.2"
-        }
+        "Tracción": "4x2",
+        "Transmisión": "Automático",
+        "Ciudad": "Ciudad de México",
+        "Sucursal": "Kavak Plaza Fortuna",
+        "Stock ID": "314154",
+        "Estacionado en": "K-110",
+        "Consumo de Combustible (KM/L)": "14.3"
     },
     "main_characteristics": {
         "general": {}

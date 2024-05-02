@@ -38,11 +38,6 @@ def create_json_file(json_data, file_name):
     with open(f'{file_name}.json', 'w', encoding='utf-8') as json_file:
         json.dump(json_data, json_file, indent=4, ensure_ascii=False)
         
-
-# https://stackoverflow.com/questions/52760842/selenium-doesnt-open-the-specified-url-and-shows-data
-
-
-
 # Path to Chromium bin
 chromium_path = "Drivers/chrome-linux64/chrome"  # Replace with the actual path
 
@@ -56,7 +51,6 @@ s = Service("chromedriver-linux64/chromedriver")
 # General information
 XPATH_NAME = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[2]/app-buy-box/section/div[1]/div[1]/h1'
 XPATH_KM_CITY = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[2]/app-buy-box/section/div[1]/div[1]/p'
-
 
 # Price
 XPATH_PRICE = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[2]/app-buy-box/section/aui-price-product/div/div/div[2]/span[2]'
@@ -77,12 +71,10 @@ XPATH_SPECIAL_EQUIPMENT = '/html/body/app-root/div/app-landing/kdl-layout-main/m
 XPATH_CLOSE = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[2]/ahl-modal-auth/aui-drawer/div/div[2]/div[1]/aui-svg[2]'
 XPATH_COOKIES = '//*[@id="onetrust-accept-btn-handler"]'
 
-XPATH_TEST = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[3]/aui-features[2]/section/aui-accordion/aui-accordion-group[1]'
-
 XPATH_MAIN_CHARACTERISTICS_GENERAL_B = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[3]/aui-features[2]/section/aui-accordion/aui-accordion-group[1]/div/h3'
 XPATH_MAIN_CHARACTERISTICS_GENERAL = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[3]/aui-features[2]/section/aui-accordion/aui-accordion-group[1]'
 XPATH_MAIN_CHARACTERISTICS_OUTSIDE = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[3]/aui-features[2]/section/aui-accordion//aui-accordion-group[2]'
-XPATH_MAIN_CHARACTERISTICS_EQUIPMENT_COMFORT = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[3]/aui-features[2]/section/aui-accordion/aui-accordion-group[3]/div/h3'
+XPATH_MAIN_CHARACTERISTICS_EQUIPMENT_COMFORT = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[3]/aui-features[2]/section/aui-accordion/aui-accordion-group[3]'
 XPATH_MAIN_CHARACTERISTICS_SECURITY = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[3]/aui-features[2]/section/aui-accordion/aui-accordion-group[4]'
 XPATH_MAIN_CHARACTERISTICS_INTERIOR = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[3]/aui-features[2]/section/aui-accordion/aui-accordion-group[5]'
 XPATH_MAIN_CHARACTERISTICS_ENTERTAINMENT = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[1]/div/div[3]/aui-features[2]/section/aui-accordion/aui-accordion-group[6]'
@@ -90,70 +82,45 @@ XPATH_MAIN_CHARACTERISTICS_ENTERTAINMENT = '/html/body/app-root/div/app-landing/
 # Imperfections
 # XPATH_IMPERFECTIONS = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[2]/app-dimples/section/div/div[1]/div/app-dimple/div/div/'
 
-def close_Cookies():
+def close_cookies():
     try:
-        print("Tratando de aceptar términos de Cookies emergente")
+        print("Attempting to accept cookie terms popup")
         WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, XPATH_COOKIES))).click()
-        # ActionChains(driver).move_to_element(WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, XPATH_CLOSE)))).click().perform()
-        print("Aceptado cookies")
+        print("Cookies accepted")
     except:
-        print("Fallo en aceptar términos de Cookies emergentes")
+        print("Failed to accept cookie terms popup")
         pass
 
-
-def close_number():
+def close_popup():
     try:
-        print("Tratando de cerrar la ventana emergente")
+        print("Trying to close the popup window")
         WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, XPATH_CLOSE))).click()
         # ActionChains(driver).move_to_element(WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, XPATH_CLOSE)))).click().perform()
-        print("Ventana cerrada")
+        print("Popup closed")
     except:
-        print("Fallo en cerrar la ventana emergente")
+        print("Failed to close the window")
         pass
 
-def open_menu(Xpath_menu, msg):
+
+def open_menu(xpath_menu, msg):
     try:
-        print("Tratando de abrir menú ->", msg, "<-")
-        ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, Xpath_menu)))).click().perform()
-        close_number()
-        ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, Xpath_menu)))).click().perform()
-        # WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, Xpath_menu))).click()
-        print("Menú abierto")
+        print("Trying to open the menu ->", msg, "<-")
+        ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))).click().perform()
+        print("Menu closed")
+        ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))).click().perform()
+        print("Menu opened")
     except:
-        print('Falló en abrir el menú')
-        close_number()
-        # WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, Xpath_menu))).click()
-        ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, Xpath_menu)))).click().perform()
-    
+        print('Failed to open the menu')
+        print("Closing window")
+        close_popup()
+        print("Trying to click")
+        ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))).click().perform()
 
 # Pass the options to the WebDriver
 with webdriver.Chrome(service=s, options=chrome_options) as driver:
     driver.get(url)
-    
-    # https://stackoverflow.com/questions/63238692/how-select-button-in-selenium-python-angular
-
-    # WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, XPATH_CLOSE))).click()
-
-    # driver.execute_script("arguments[0].click();", WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, XPATH_MAIN_CHARACTERISTICS_GENERAL_BUTTON))))
-    # ActionChains(driver).move_to_element(WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, XPATH_CLOSE)))).click().perform()
-    close_Cookies()
-    # close_number()
-
-    # ActionChains(driver).move_to_element(WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, XPATH_MAIN_CHARACTERISTICS_GENERAL_BUTTON)))).click().perform()
-    
-    # try:
-    #     print("Tratando de abrir menú")
-    #     ActionChains(driver).move_to_element(WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.XPATH, XPATH_MAIN_CHARACTERISTICS_GENERAL_B)))).click().perform()
-    #     close_number()
-    #     WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, XPATH_MAIN_CHARACTERISTICS_GENERAL_B))).click()
-    #     print("Menú abierto")
-    # except:
-    #     print('Falló en abrir el menú')
-    #     close_number()
-    #     ActionChains(driver).move_to_element(WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, XPATH_MAIN_CHARACTERISTICS_GENERAL_B)))).click().perform()
-    #     # WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, XPATH_MAIN_CHARACTERISTICS_GENERAL_B))).click()
-    
-    open_menu(XPATH_TEST, 'Generales')
+    driver.maximize_window()
+    close_cookies()
 
     json_parsed = {}
     json_parsed['url'] = url
@@ -174,22 +141,28 @@ with webdriver.Chrome(service=s, options=chrome_options) as driver:
     # Main Charecteristic
     json_parsed['main_characteristics'] = {}
 
-    # print('text', driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_GENERAL).text)
-    # print('arr', string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_GENERAL).text))
-    # print('parse', parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_GENERAL).text)))
-
+    open_menu(XPATH_MAIN_CHARACTERISTICS_GENERAL, 'General')
     json_parsed['main_characteristics']['general'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_GENERAL).text))['attributes']
-    # json_parsed['main_characteristics']['outside'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_OUTSIDE).text))['attributes']
-    # json_parsed['main_characteristics']['equipment_confort'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_EQUIPMENT_COMFORT).text))['attributes']
-    # json_parsed['main_characteristics']['security'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_SECURITY).text))['attributes']
-    # json_parsed['main_characteristics']['interior'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_INTERIOR).text))['attributes']
-    # json_parsed['main_characteristics']['entretaiment'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_ENTERTAINMENT).text))['attributes']
+
+    open_menu(XPATH_MAIN_CHARACTERISTICS_OUTSIDE, 'Outside')
+    json_parsed['main_characteristics']['outside'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_OUTSIDE).text))['attributes']
+
+    open_menu(XPATH_MAIN_CHARACTERISTICS_EQUIPMENT_COMFORT, 'Comfort')
+    json_parsed['main_characteristics']['equipment_confort'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_EQUIPMENT_COMFORT).text))['attributes']
+
+    open_menu(XPATH_MAIN_CHARACTERISTICS_SECURITY, 'Security')
+    json_parsed['main_characteristics']['security'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_SECURITY).text))['attributes']
+
+    open_menu(XPATH_MAIN_CHARACTERISTICS_INTERIOR, 'Interior')
+    json_parsed['main_characteristics']['interior'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_INTERIOR).text))['attributes']
+
+    open_menu(XPATH_MAIN_CHARACTERISTICS_ENTERTAINMENT, 'Entertaiment')
+    json_parsed['main_characteristics']['entretaiment'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH_MAIN_CHARACTERISTICS_ENTERTAINMENT).text))['attributes']
 
     # Imperfections
     # json_parsed['imperfections'] = len(parse_arr(driver.find_element(By.XPATH,XPATH_IMPERFECTIONS).text))
 
-
     # Stock ID
     print("Creando documento json")
-    create_json_file(json_parsed, 'test')
-    time.sleep(20)
+    create_json_file(json_parsed, json_parsed["general_descriptions"]["Stock ID"])
+    time.sleep(5)

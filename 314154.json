@@ -35,7 +35,13 @@
             "Número de Rin": "16",
             "Material Rin": "Aluminio"
         },
-        "equipment_confort": {},
+        "equipment_confort": {
+            "Temperatura externa": "Sí",
+            "Sensor Trasero": "Sí",
+            "Aire acondicionado": "Sí",
+            "Portavasos Delanteros": "Sí",
+            "Portavasos Traseros": "Sí"
+        },
         "security": {
             "Control de tracción": "Sí",
             "Anclaje Infantil ISOFIX": "Sí",

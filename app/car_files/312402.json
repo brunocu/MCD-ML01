@@ -1,0 +1,62 @@
+{
+    "url": "https://www.kavak.com/mx/usado/fiat-500-14_trendy_at-hatchback-2015",
+    "name": "Fiat 500 1.4 SPORT TURBO AT Hatchback 2015",
+    "KM-city": "86,558 km • Ciudad de México",
+    "price": "207,999",
+    "month_price": "Desde $2,988 /mes*",
+    "year": "2015",
+    "model": "1.4 SPORT TURBO AT",
+    "general_descriptions": {
+        "Tracción": "4x2",
+        "Transmisión": "Automático",
+        "Ciudad": "Ciudad de México",
+        "Sucursal": "Online CDMX",
+        "Stock ID": "312402",
+        "Estacionado en": "BL_1_Sur",
+        "Consumo de Combustible (KM/L)": "14.7"
+    },
+    "main_characteristics": {
+        "general": {
+            "Aceleración Estimada 0-100 km/h": "10.5",
+            "Tipo de motor": "Combustión",
+            "Combustible": "Gasolina",
+            "Caballos de Fuerza Estimado": "135",
+            "Litros": "1.4",
+            "Velocidad Máxima Estimada (km/h)": "182",
+            "Torque Estimado lb/ft": "150",
+            "Numero de Velocidades": "6",
+            "Turbo": "Sí",
+            "Vidrios Delanteros eléctricos": "Sí"
+        },
+        "outside": {
+            "Tipo de Carrocería": "Hatchback",
+            "Ventanilla Trasera": "Sí",
+            "Añadidos Aerodinamicos": "Spoiler / Aleron",
+            "Número de Puertas": "3",
+            "Faros": "Faros de Niebla",
+            "Material Rin": "Aluminio",
+            "Número de Rin": "16"
+        },
+        "equipment_confort": {
+            "Temperatura externa": "Sí",
+            "Quemacocos": "Sí",
+            "Aire acondicionado": "Sí",
+            "Portavasos Delanteros": "Sí",
+            "Portavasos Traseros": "Sí"
+        },
+        "security": {
+            "Control de tracción": "Sí",
+            "Anclaje Infantil ISOFIX": "Sí",
+            "Seguros Eléctricos": "Llave de la tarjeta"
+        },
+        "interior": {
+            "Material Asientos": "Piel",
+            "Número de Pasajeros": "4"
+        },
+        "entretaiment": {
+            "Radio": "Sí",
+            "AUX": "Sí",
+            "USB": "Sí"
+        }
+    }
+}

@@ -1,0 +1,60 @@
+{
+    "url": "https://www.kavak.com/mx/usado/chevrolet-beat-12_ltz_c-hatchback-2020",
+    "name": "Chevrolet Beat 1.2 LTZ C Hatchback 2020",
+    "KM-city": "48,421 km • Ciudad de México",
+    "price": "190,999",
+    "month_price": "Desde $2,796 /mes*",
+    "year": "2020",
+    "model": "1.2 LTZ C",
+    "general_descriptions": {
+        "Tracción": "4x2",
+        "Transmisión": "Manual",
+        "Ciudad": "Ciudad de México",
+        "Sucursal": "Kavak El Rosario Town Center",
+        "Stock ID": "311491",
+        "Estacionado en": "B-10",
+        "Consumo de Combustible (KM/L)": "18.2"
+    },
+    "main_characteristics": {
+        "general": {
+            "Aceleración Estimada 0-100 km/h": "12.1",
+            "Tipo de motor": "Combustión",
+            "Combustible": "Gasolina",
+            "Caballos de Fuerza Estimado": "81",
+            "Litros": "1.2",
+            "Velocidad Máxima Estimada (km/h)": "164",
+            "Torque Estimado lb/ft": "80",
+            "Numero de Velocidades": "5",
+            "Vidrios Traseros eléctricos": "Sí",
+            "Vidrios Delanteros funcionamiento": "Eléctricos"
+        },
+        "outside": {
+            "Tipo de Carrocería": "Hatchback",
+            "Ventanilla Trasera": "Sí",
+            "Apertura de Cajuela": "Eléctrica",
+            "Número de Puertas": "5",
+            "Faros": "Faros de Niebla",
+            "Material Rin": "Aluminio",
+            "Número de Rin": "14"
+        },
+        "equipment_confort": {
+            "Aire acondicionado": "Sí",
+            "Portavasos Delanteros": "Sí",
+            "Portavasos Traseros": "Sí"
+        },
+        "security": {
+            "Anclaje Infantil ISOFIX": "Sí",
+            "Seguros Eléctricos": "Remoto"
+        },
+        "interior": {
+            "Material Asientos": "Tela",
+            "Número de Pasajeros": "5"
+        },
+        "entretaiment": {
+            "Radio": "Sí",
+            "Pantalla Táctil": "Sí",
+            "AUX": "Sí",
+            "USB": "Sí"
+        }
+    }
+}

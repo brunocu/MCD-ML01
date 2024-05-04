@@ -2,7 +2,7 @@ import scrapper_utils as scrapper_utils
 # Path to Chromium bin
 chromium_path =  "/home/thinkpad/Documents/MCD/MachineLearning_01/Scrapper/Drivers/chrome-linux64/chrome" #"Drivers/chrome-linux64/chrome" 
 service_path = "/home/thinkpad/Documents/MCD/MachineLearning_01/Scrapper/chromedriver-linux64/chromedriver"
-url = "https://www.kavak.com/mx/usado/renault-duster-20_intens-suv-2018"
+url = "https://www.kavak.com/mx/usado/chevrolet-beat-12_ltz_c-hatchback-2020"
 
 XPATH = {
     # General information

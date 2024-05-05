@@ -54,19 +54,24 @@ def close_popup(driver, XPATH_CLOSE):
         print("Failed to close the window")
         pass
 
-def open_menu(driver, xpath_menu, msg, XPATH_CLOSE):
+def open_menu(driver, xpath_menu, msg, XPATH_CLOSE, scroll_px):
     try:
         print("Trying to open the menu ->", msg, "<-")
         ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))).click().perform()
-        print("Menu closed")
+        print("Menu open")
+        driver.execute_script("window.scrollBy(0,{})".format(scroll_px),"")
+        time.sleep(1)
         ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))).click().perform()
-        print("Menu opened")
+        print("Menu close")
+
     except:
         print('Failed to open the menu')
         print("Closing window")
         close_popup(driver, XPATH_CLOSE)
         print("Trying to click")
         ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))).click().perform()
+        driver.execute_script("window.scrollBy(0,{})".format(scroll_px),"")
+        time.sleep(1)
 
 def get_car_info(chromium_path, service_path, XPATH, url):
     s = Service(service_path)
@@ -95,41 +100,29 @@ def get_car_info(chromium_path, service_path, XPATH, url):
         # Main Charecteristic
         json_parsed['main_characteristics'] = {}
 
-        open_menu(driver, XPATH['XPATH_MAIN_CHARACTERISTICS_GENERAL'], 'General', XPATH['XPATH_CLOSE'])
+        open_menu(driver, XPATH['XPATH_MAIN_CHARACTERISTICS_GENERAL'], 'General', XPATH['XPATH_CLOSE'], 500)
         json_parsed['main_characteristics']['general'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH['XPATH_MAIN_CHARACTERISTICS_GENERAL']).text))['attributes']
-        # time.sleep(15)
-        open_menu(driver,XPATH['XPATH_MAIN_CHARACTERISTICS_OUTSIDE'], 'Outside', XPATH['XPATH_CLOSE'])
+
+        open_menu(driver,XPATH['XPATH_MAIN_CHARACTERISTICS_OUTSIDE'], 'Outside', XPATH['XPATH_CLOSE'], 50)
         json_parsed['main_characteristics']['outside'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH['XPATH_MAIN_CHARACTERISTICS_OUTSIDE']).text))['attributes']
 
-        open_menu(driver,XPATH['XPATH_MAIN_CHARACTERISTICS_EQUIPMENT_COMFORT'], 'Comfort', XPATH['XPATH_CLOSE'])
+        open_menu(driver,XPATH['XPATH_MAIN_CHARACTERISTICS_EQUIPMENT_COMFORT'], 'Comfort', XPATH['XPATH_CLOSE'], 50)
         json_parsed['main_characteristics']['equipment_confort'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH['XPATH_MAIN_CHARACTERISTICS_EQUIPMENT_COMFORT']).text))['attributes']
-
-        open_menu(driver,XPATH['XPATH_MAIN_CHARACTERISTICS_SECURITY'], 'Security', XPATH['XPATH_CLOSE'])
+        
+        open_menu(driver,XPATH['XPATH_MAIN_CHARACTERISTICS_SECURITY'], 'Security', XPATH['XPATH_CLOSE'], 50)
         json_parsed['main_characteristics']['security'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH['XPATH_MAIN_CHARACTERISTICS_SECURITY']).text))['attributes']
 
-        open_menu(driver,XPATH['XPATH_MAIN_CHARACTERISTICS_INTERIOR'], 'Interior', XPATH['XPATH_CLOSE'])
+        open_menu(driver,XPATH['XPATH_MAIN_CHARACTERISTICS_INTERIOR'], 'Interior', XPATH['XPATH_CLOSE'], 50)
         json_parsed['main_characteristics']['interior'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH['XPATH_MAIN_CHARACTERISTICS_INTERIOR']).text))['attributes']
 
-        open_menu(driver,XPATH['XPATH_MAIN_CHARACTERISTICS_ENTERTAINMENT'], 'Entertaiment', XPATH['XPATH_CLOSE'])
+        open_menu(driver,XPATH['XPATH_MAIN_CHARACTERISTICS_ENTERTAINMENT'], 'Entertaiment', XPATH['XPATH_CLOSE'], 50)
         json_parsed['main_characteristics']['entretaiment'] = parse_arr(string_to_array(driver.find_element(By.XPATH,XPATH['XPATH_MAIN_CHARACTERISTICS_ENTERTAINMENT']).text))['attributes']
 
         # Imperfections
         # json_parsed['imperfections'] = len(parse_arr(driver.find_element(By.XPATH,XPATH_IMPERFECTIONS).text))
     time.sleep(5)
-    driver.close() # Revisar
+    # driver.close() # Revisar
     return json_parsed
-
-# def get_car_links(chromium_path, service_path, XPATH, url):
-#     s = Service(service_path)
-#     chrome_options = Options()
-#     chrome_options.binary_location = chromium_path
-#     with webdriver.Chrome(service=s, options=chrome_options) as driver:
-#         driver.get(url)
-#         driver.maximize_window()
-#         close_cookies(driver, XPATH['XPATH_COOKIES'])
-#         car_list = driver.find_element(By.XPATH,XPATH['XPATH_LINK_TO_CARS'])
-#         print('car_list',car_list.get_attribute("href"))
-#     return car_list
 
 def get_car_links(chromium_path, service_path, XPATH, url):
     s = Service(service_path)
@@ -152,7 +145,23 @@ def get_car_links(chromium_path, service_path, XPATH, url):
         car_links = {}
         for index, car in enumerate(car_list):
             car_links[index] = car.get_attribute("href")
+    time.sleep(5)
+    # driver.close()
     return car_links
+
+def append_to_fails(json_data):
+    try:
+        try:
+            with open('fails.json', 'r') as file:
+                fails_data = json.load(file)
+        except FileNotFoundError:
+            fails_data = []
+        fails_data.append(json_data)
+        with open('fails.json', 'w') as file:
+            json.dump(fails_data, file, indent=4)
+        print("Data added successfully to fails.json.")
+    except Exception as e:
+        print(f"Error appending data to fails.json: {e}")
 
 # if __name__ == "__main__":
 # 	run()

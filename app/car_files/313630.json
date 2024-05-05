@@ -16,7 +16,19 @@
         "Consumo de Combustible (KM/L)": "15.6"
     },
     "main_characteristics": {
-        "general": {},
+        "general": {
+            "Aceleración Estimada 0-100 km/h": "9.0",
+            "Tipo de motor": "Combustión",
+            "Combustible": "Gasolina",
+            "Caballos de Fuerza Estimado": "122",
+            "Litros": "1.4",
+            "Velocidad Máxima Estimada (km/h)": "203",
+            "Torque Estimado lb/ft": "148",
+            "Numero de Velocidades": "7",
+            "Start/Stop": "Sí",
+            "Turbo": "Sí",
+            "Vidrios Delanteros eléctricos": "Sí"
+        },
         "outside": {
             "Tipo de Carrocería": "Hatchback",
             "Ventanilla Trasera": "Sí",

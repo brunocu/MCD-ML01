@@ -68,7 +68,7 @@ def open_menu(driver, xpath_menu, msg, XPATH_CLOSE):
         print("Trying to click")
         ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))).click().perform()
 
-def scrap_page(chromium_path, service_path, XPATH, url):
+def get_car_info(chromium_path, service_path, XPATH, url):
     s = Service(service_path)
     chrome_options = Options()
     chrome_options.binary_location = chromium_path
@@ -115,11 +115,38 @@ def scrap_page(chromium_path, service_path, XPATH, url):
 
         # Imperfections
         # json_parsed['imperfections'] = len(parse_arr(driver.find_element(By.XPATH,XPATH_IMPERFECTIONS).text))
+    time.sleep(5)
+    driver.close() # Revisar
+    return json_parsed
 
-        # Stock ID
-        print(f'Creando documento {json_parsed["general_descriptions"]["Stock ID"]} json')
-        create_json_file(json_parsed, json_parsed["general_descriptions"]["Stock ID"])
-        time.sleep(5)
+
+# def get_car_links(chromium_path, service_path, XPATH, url):
+#     s = Service(service_path)
+#     chrome_options = Options()
+#     chrome_options.binary_location = chromium_path
+#     with webdriver.Chrome(service=s, options=chrome_options) as driver:
+#         driver.get(url)
+#         driver.maximize_window()
+#         close_cookies(driver, XPATH['XPATH_COOKIES'])
+#         car_list = driver.find_element(By.XPATH,XPATH['XPATH_LINK_TO_CARS'])
+#         print('car_list',car_list.get_attribute("href"))
+#     return car_list
+
+def get_car_links(chromium_path, service_path, XPATH, url):
+    s = Service(service_path)
+    chrome_options = Options()
+    chrome_options.binary_location = chromium_path
+    with webdriver.Chrome(service=s, options=chrome_options) as driver:
+        driver.get(url)
+        driver.maximize_window()
+        close_cookies(driver, XPATH['XPATH_COOKIES'])
+        car_list = driver.find_elements(By.XPATH,XPATH['XPATH_LINK_TO_CARS'])
+        print('car_list',len(car_list))
+        car_links = {}
+        for index, car in enumerate(car_list):
+            car_links[index] = car.get_attribute("href")
+            # print()
+    return car_links
 
 # if __name__ == "__main__":
 # 	run()

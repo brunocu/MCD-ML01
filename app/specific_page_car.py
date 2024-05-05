@@ -2,7 +2,7 @@ import scrapper_utils as scrapper_utils
 # Path to Chromium bin
 chromium_path =  "/home/thinkpad/Documents/MCD/MachineLearning_01/Scrapper/Drivers/chrome-linux64/chrome" #"Drivers/chrome-linux64/chrome" 
 service_path = "/home/thinkpad/Documents/MCD/MachineLearning_01/Scrapper/chromedriver-linux64/chromedriver"
-url = "https://www.kavak.com/mx/usado/chevrolet-beat-12_ltz_c-hatchback-2020"
+url = "https://www.kavak.com/mx/usado/honda-city-15_ex-sedan-2017"
 
 XPATH = {
     # General information
@@ -41,4 +41,6 @@ XPATH = {
     # XPATH_IMPERFECTIONS = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[2]/app-dimples/section/div/div[1]/div/app-dimple/div/div/'
 }
 
-scrapper_utils.scrap_page(chromium_path, service_path, XPATH, url)
+json_parsed = scrapper_utils.get_car_info(chromium_path, service_path, XPATH, url)
+print(f'Creando documento {json_parsed["general_descriptions"]["Stock ID"]} json')
+scrapper_utils.create_json_file(json_parsed, json_parsed["general_descriptions"]["Stock ID"])

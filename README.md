@@ -40,12 +40,13 @@ Below are the steps to create a Python virtual environment and install the neces
 
 4. **Install Dependencies:** Once the virtual environment is activated, install the project dependencies by running the following command:
     ```
+    pip install --upgrade pip
     pip install -r requirements.txt
     ```
 
 5. **Get Drivers:** Download drivers by run following command:
     ```
-    chmod + x get_drivers.sh
+    chmod +x get_drivers.sh
     sudo ./get_drivers.sh
 
 5. **Run script:** Run pythons script by running the following command:

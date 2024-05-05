@@ -41,8 +41,8 @@ def close_cookies(driver, XPATH_COOKIES):
         print("Attempting to accept cookie terms popup")
         WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, XPATH_COOKIES))).click()
         print("Cookies accepted")
-    except:
-        print("Failed to accept cookie terms popup")
+    except Exception as e:
+        print(f"Failed to accept cookie terms popup \n Error: {e}")
         pass
 
 def close_popup(driver, XPATH_CLOSE):
@@ -50,8 +50,8 @@ def close_popup(driver, XPATH_CLOSE):
         print("Trying to close the popup window")
         WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, XPATH_CLOSE))).click()
         print("Popup closed")
-    except:
-        print("Failed to close the window")
+    except Exception as e:
+        print(f"Failed to close the window. \n Error: {e}")
         pass
 
 def open_menu(driver, xpath_menu, msg, XPATH_CLOSE, scroll_px):
@@ -64,8 +64,8 @@ def open_menu(driver, xpath_menu, msg, XPATH_CLOSE, scroll_px):
         ActionChains(driver).move_to_element(WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, xpath_menu)))).click().perform()
         print("Menu close")
 
-    except:
-        print('Failed to open the menu')
+    except Exception as e:
+        print(f"Failed to open the menu. \n Error: {e}")
         print("Closing window")
         close_popup(driver, XPATH_CLOSE)
         print("Trying to click")
@@ -149,19 +149,43 @@ def get_car_links(chromium_path, service_path, XPATH, url):
     # driver.close()
     return car_links
 
-def append_to_fails(json_data):
+def append_to_fails(json_data,page):
     try:
         try:
-            with open('fails.json', 'r') as file:
+            with open('app/pages/fails_page_{}.json'.format(page), 'r') as file:
                 fails_data = json.load(file)
         except FileNotFoundError:
             fails_data = []
         fails_data.append(json_data)
-        with open('fails.json', 'w') as file:
+        with open('app/pages/fails_page_{}.json'.format(page), 'w') as file:
             json.dump(fails_data, file, indent=4)
         print("Data added successfully to fails.json.")
     except Exception as e:
         print(f"Error appending data to fails.json: {e}")
+
+def remove_from_fails_by_id(id_to_remove, page):
+    try:
+        try:
+            with open('app/pages/fails_page_{}.json'.format(page), 'r') as file:
+                fails_data = json.load(file)
+        except FileNotFoundError:
+            fails_data = []
+
+        for json_object in fails_data:
+            if json_object.get("id") == id_to_remove:
+                fails_data.remove(json_object)
+                break
+
+        with open('app/pages/fails_page_{}.json'.format(page), 'w') as file:
+            json.dump(fails_data, file, indent=4)
+
+        print(f"Element with id {id_to_remove} successfully removed from fails_page_{page}.json.")
+    except Exception as e:
+        print(f"Error removing element from fails_page_{page}.json: {e}")
+
+# Example usage
+remove_from_fails_by_id(1, 5)
+
 
 # if __name__ == "__main__":
 # 	run()

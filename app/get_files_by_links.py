@@ -58,4 +58,4 @@ for index, car_url in enumerate(car_links.values()):
         time.sleep(10)
     except:
         print("Error retriving data")
-        scrapper_utils.append_to_fails({"id": index, "name": car_url})
+        scrapper_utils.append_to_fails({"id": index, "link": car_url}, scrap_page)

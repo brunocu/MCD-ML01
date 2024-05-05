@@ -119,7 +119,6 @@ def get_car_info(chromium_path, service_path, XPATH, url):
     driver.close() # Revisar
     return json_parsed
 
-
 # def get_car_links(chromium_path, service_path, XPATH, url):
 #     s = Service(service_path)
 #     chrome_options = Options()
@@ -140,12 +139,19 @@ def get_car_links(chromium_path, service_path, XPATH, url):
         driver.get(url)
         driver.maximize_window()
         close_cookies(driver, XPATH['XPATH_COOKIES'])
+        # driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")
+        end = driver.find_element(By.XPATH,XPATH['XPATH_END'])
+        ActionChains(driver).move_to_element(end).perform()
+        time.sleep(2)
+        ActionChains(driver).move_to_element(end).perform()
+        time.sleep(2)
+        ActionChains(driver).move_to_element(end).perform()
+        time.sleep(2)
         car_list = driver.find_elements(By.XPATH,XPATH['XPATH_LINK_TO_CARS'])
-        print('car_list',len(car_list))
+        print('Got {} links'.format(len(car_list)))
         car_links = {}
         for index, car in enumerate(car_list):
             car_links[index] = car.get_attribute("href")
-            # print()
     return car_links
 
 # if __name__ == "__main__":

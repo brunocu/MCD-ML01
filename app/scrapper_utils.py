@@ -183,9 +183,5 @@ def remove_from_fails_by_id(id_to_remove, page):
     except Exception as e:
         print(f"Error removing element from fails_page_{page}.json: {e}")
 
-# Example usage
-remove_from_fails_by_id(1, 5)
-
-
 # if __name__ == "__main__":
 # 	run()

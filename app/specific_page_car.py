@@ -44,4 +44,4 @@ XPATH = {
 
 json_parsed = scrapper_utils.get_car_info(chromium_path, service_path, XPATH, url)
 print(f'Creando documento {json_parsed["general_descriptions"]["Stock ID"]} json')
-scrapper_utils.create_json_file(json_parsed, './car_files/{}'.format(json_parsed["general_descriptions"]["Stock ID"]))
+scrapper_utils.create_json_file(json_parsed, 'app/car_files/{}'.format(json_parsed["general_descriptions"]["Stock ID"]))

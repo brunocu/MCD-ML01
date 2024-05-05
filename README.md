@@ -21,6 +21,7 @@ Below are the steps to create a Python virtual environment and install the neces
 1. **Clone the Repository:** Clone this repository to your local machine using the following command:
     ```
     git clone git@github.com:Anonymate054/MCD-ML01.git
+    cd MCD-ML01
     ```
 
 2. **Create a Virtual Environment:** Navigate to the project directory and create a virtual environment using the following command:

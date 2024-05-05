@@ -1,6 +1,6 @@
-# Used Car Scraping
+# Car Scraping
 
-This project consists of a scraper for a used car company, aimed at extracting information to understand how the price relates to the car's features, such as model, year, mileage, etc.
+This project involves developing a web scraper tailored for a car dealership. Its purpose is to extract information crucial for understanding how prices correlate with various car features, including model, year, mileage, and more.
 
 ## Objective
 

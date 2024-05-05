@@ -20,5 +20,5 @@ for page in range(begin_page,max_pages):
     url_completo = HOME_URL.format(page)
     car_links = scrapper_utils.get_car_links(chromium_path, service_path, XPATH, url_completo)
     print("Scraping page {}".format(page))
-    scrapper_utils.create_json_file(car_links, "app/pages/page_{}".format(page))
+    scrapper_utils.create_json_file(car_links, "app/links/page_{}".format(page))
     time.sleep(30)

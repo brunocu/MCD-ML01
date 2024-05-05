@@ -152,12 +152,12 @@ def get_car_links(chromium_path, service_path, XPATH, url):
 def append_to_fails(json_data,page):
     try:
         try:
-            with open('app/pages/fails_page_{}.json'.format(page), 'r') as file:
+            with open('app/links/fails_page_{}.json'.format(page), 'r') as file:
                 fails_data = json.load(file)
         except FileNotFoundError:
             fails_data = []
         fails_data.append(json_data)
-        with open('app/pages/fails_page_{}.json'.format(page), 'w') as file:
+        with open('app/links/fails_page_{}.json'.format(page), 'w') as file:
             json.dump(fails_data, file, indent=4)
         print("Data added successfully to fails.json.")
     except Exception as e:
@@ -166,7 +166,7 @@ def append_to_fails(json_data,page):
 def remove_from_fails_by_id(id_to_remove, page):
     try:
         try:
-            with open('app/pages/fails_page_{}.json'.format(page), 'r') as file:
+            with open('app/links/fails_page_{}.json'.format(page), 'r') as file:
                 fails_data = json.load(file)
         except FileNotFoundError:
             fails_data = []
@@ -176,7 +176,7 @@ def remove_from_fails_by_id(id_to_remove, page):
                 fails_data.remove(json_object)
                 break
 
-        with open('app/pages/fails_page_{}.json'.format(page), 'w') as file:
+        with open('app/links/fails_page_{}.json'.format(page), 'w') as file:
             json.dump(fails_data, file, indent=4)
 
         print(f"Element with id {id_to_remove} successfully removed from fails_page_{page}.json.")

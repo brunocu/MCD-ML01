@@ -46,7 +46,7 @@ XPATH = {
 scrap_page = 0
 
 # Read file 
-with open('app/pages/page_{}.json'.format(scrap_page), 'r') as file:
+with open('app/links/page_{}.json'.format(scrap_page), 'r') as file:
     car_links = json.load(file)
 
 for index, car_url in enumerate(car_links.values()):

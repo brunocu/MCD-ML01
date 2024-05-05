@@ -1,7 +1,7 @@
 import scrapper_utils as scrapper_utils
 # Path to Chromium bin
-chromium_path =  "/home/thinkpad/Documents/MCD/MachineLearning_01/Scrapper/Drivers/chrome-linux64/chrome" #"Drivers/chrome-linux64/chrome" 
-service_path = "/home/thinkpad/Documents/MCD/MachineLearning_01/Scrapper/chromedriver-linux64/chromedriver"
+chromium_path =  "./app/drivers/chrome-linux64/chrome"
+service_path = "./app/drivers/chromedriver-linux64/chromedriver"
 url = "https://www.kavak.com/mx/usado/honda-city-15_ex-sedan-2017"
 
 XPATH = {

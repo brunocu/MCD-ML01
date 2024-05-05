@@ -43,6 +43,11 @@ Below are the steps to create a Python virtual environment and install the neces
     pip install -r requirements.txt
     ```
 
+5. **Get Drivers:** Download drivers by run following command:
+    ```
+    chmod + x get_drivers.sh
+    sudo ./get_drivers.sh
+
 5. **Run script:** Run pythons script by running the following command:
     ```
     python3 test_2.py

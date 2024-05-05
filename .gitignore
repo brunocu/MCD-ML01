@@ -249,10 +249,7 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,linux,windows,macos
 
-# Drivers Files
-chromedriver-linux64
-Drivers
-
 # Files 
 app/car_files
 app/pages
+app/drivers

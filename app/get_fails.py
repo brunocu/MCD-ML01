@@ -3,8 +3,8 @@ import json
 import time
 
 # Path to Chromium bin
-chromium_path =  "./app/drivers/chrome-linux64/chrome"
-service_path = "./app/drivers/chromedriver-linux64/chromedriver"
+chromium_path =  "./drivers/chrome-linux64/chrome"
+service_path = "./drivers/chromedriver-linux64/chromedriver"
 
 XPATH = {
     # General information

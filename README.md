@@ -49,8 +49,8 @@ Below are the steps to create a Python virtual environment and install the neces
     ```
     chmod +x get_drivers.sh
     sudo ./get_drivers.sh
-
-5. **Run script:** Run pythons script by running the following command:
+    ```
+6. **Run script:** Run pythons script by running the following command:
     ```
     python app/<python_script>.py
     ```

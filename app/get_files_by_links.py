@@ -43,7 +43,6 @@ XPATH = {
     # XPATH_IMPERFECTIONS = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[2]/app-dimples/section/div/div[1]/div/app-dimple/div/div/'
 }
 
-# url = "https://www.kavak.com/mx/usado/honda-city-15_ex-sedan-2017"
 scrap_page = 0
 
 # Read file 
@@ -51,13 +50,12 @@ with open('app/pages/page_{}.json'.format(scrap_page), 'r') as file:
     car_links = json.load(file)
 
 for index, car_url in enumerate(car_links.values()):
-    if (index == 0):
-        try:
-            print("Visiting: ", car_url)
-            json_parsed = scrapper_utils.get_car_info(chromium_path, service_path, XPATH, car_url)
-            print(f'Creando documento: {json_parsed["general_descriptions"]["Stock ID"]} json')
-            scrapper_utils.create_json_file(json_parsed, 'app/car_files/{}'.format(json_parsed["general_descriptions"]["Stock ID"]))
-            time.sleep(10)
-        except:
-            print("Error retriving data")
-            scrapper_utils.append_to_fails({"id": index, "name": car_url})
+    try:
+        print("Visiting: ", car_url)
+        json_parsed = scrapper_utils.get_car_info(chromium_path, service_path, XPATH, car_url)
+        print(f'Creando documento: {json_parsed["general_descriptions"]["Stock ID"]} json')
+        scrapper_utils.create_json_file(json_parsed, 'app/car_files/{}_{}_{}'.format(scrap_page, index, json_parsed["general_descriptions"]["Stock ID"]))
+        time.sleep(10)
+    except:
+        print("Error retriving data")
+        scrapper_utils.append_to_fails({"id": index, "name": car_url})

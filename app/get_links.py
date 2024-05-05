@@ -1,8 +1,8 @@
 import scrapper_utils as scrapper_utils
 import time
 # Path to Chromium bin
-chromium_path =  "./drivers/chrome-linux64/chrome"
-service_path = "./drivers/chromedriver-linux64/chromedriver"
+chromium_path =  "app/drivers/chrome-linux64/chrome"
+service_path = "app/drivers/chromedriver-linux64/chromedriver"
 HOME_URL = 'https://www.kavak.com/mx/seminuevos?page={}'
 begin_page = 2
 max_pages = 10

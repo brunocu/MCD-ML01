@@ -183,5 +183,12 @@ def remove_from_fails_by_id(id_to_remove, page):
     except Exception as e:
         print(f"Error removing element from fails_page_{page}.json: {e}")
 
+def create_folder_if_not_exists(folder_name):
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+        print(f"The folder '{folder_name}' has been created.")
+    else:
+        print(f"The folder '{folder_name}' already exists.")
+
 # if __name__ == "__main__":
 # 	run()

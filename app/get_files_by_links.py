@@ -43,19 +43,22 @@ XPATH = {
     # XPATH_IMPERFECTIONS = '/html/body/app-root/div/app-landing/kdl-layout-main/main/app-main-grid/div[2]/app-dimples/section/div/div[1]/div/app-dimple/div/div/'
 }
 
-scrap_page = 0
+scrap_page_min = 29
+scrap_page_max = 35
 
-# Read file 
-with open('app/links/page_{}.json'.format(scrap_page), 'r') as file:
-    car_links = json.load(file)
+for scrap_page in range(scrap_page_min, scrap_page_max):
+    with open('app/links/page_{}.json'.format(scrap_page), 'r') as file:
+        car_links = json.load(file)
 
-for index, car_url in enumerate(car_links.values()):
-    try:
-        print("Visiting: ", car_url)
-        json_parsed = scrapper_utils.get_car_info(chromium_path, service_path, XPATH, car_url)
-        print(f'Creando documento: {json_parsed["general_descriptions"]["Stock ID"]} json')
-        scrapper_utils.create_json_file(json_parsed, 'app/car_files/{}_{}_{}'.format(scrap_page, index, json_parsed["general_descriptions"]["Stock ID"]))
-        time.sleep(10)
-    except:
-        print("Error retriving data")
-        scrapper_utils.append_to_fails({"id": index, "link": car_url}, scrap_page)
+    scrapper_utils.create_folder_if_not_exists('app/car_files/link_{}'.format(scrap_page))
+
+    for index, car_url in enumerate(car_links.values()):
+        try:
+            print("Visiting: ", car_url)
+            json_parsed = scrapper_utils.get_car_info(chromium_path, service_path, XPATH, car_url)
+            print(f'Creando documento: {json_parsed["general_descriptions"]["Stock ID"]} json')
+            scrapper_utils.create_json_file(json_parsed, 'app/car_files/link_{}/{}_{}_{}'.format(scrap_page, scrap_page, index, json_parsed["general_descriptions"]["Stock ID"]))
+            time.sleep(10)
+        except:
+            print("Error retriving data")
+            scrapper_utils.append_to_fails({"id": index, "link": car_url}, scrap_page)

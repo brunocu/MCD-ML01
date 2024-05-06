@@ -4,8 +4,8 @@ import time
 chromium_path =  "app/drivers/chrome-linux64/chrome"
 service_path = "app/drivers/chromedriver-linux64/chromedriver"
 HOME_URL = 'https://www.kavak.com/mx/seminuevos?page={}'
-begin_page = 2
-max_pages = 10
+begin_page = 30
+max_pages = 35
 # max_pages = 203
 XPATH = {
     # 'XPATH_LINK_TO_CARS' : '/html/body/app-root/div/app-landing/aui-layout-main/main/asw-widget-main/div/div[2]/asw-widget-grid/div/div[5]/@href',
